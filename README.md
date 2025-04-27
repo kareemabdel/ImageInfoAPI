@@ -22,7 +22,31 @@ All files stored in the file system — no database required.
 
    #Notes
 Uploaded original and resized images are saved under /Storage/Originals, /Storage/Resized/Phone, etc.
-
 Metadata files are saved under /Storage/Metadata.
-
 Maximum file size allowed: 2MB per image.
+
+
+#API contains 
+1. Upload Images endpoint
+Endpoint: POST /api/images/upload
+Request: multipart/form-data
+Field: files (multiple images)
+Response:
+[
+  {
+    "uniqueId": "c1d9f50f-6d6d-4b09-b708-52d69f32f938"
+  }
+]
+
+2. Download Resized Image endpoint
+ Endpoint: GET /api/images/download
+Query Parameters:
+uniqueImageId:GUID
+size (values: Phone, Tablet, Desktop)
+example: GET /api/images/download?uniqueImageId=c1d9f50f-6d6d-4b09-b708-52d69f32f938&size=phone
+
+3.Get Metadata endpoint
+Endpoint: GET /api/images/metadata
+Query Parameters:
+uniqueImageId
+GET /api/images/metadata?uniqueImageId=c1d9f50f-6d6d-4b09-b708-52d69f32f938
